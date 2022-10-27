@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components'
 
 export const Container = styled.section`
   width: 100%;
@@ -7,7 +7,7 @@ export const Container = styled.section`
   padding: 0 1.5rem;
 
   display: grid;
-  grid-template-columns: repeat(3 ,1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 
   margin-top: -5rem;
@@ -18,7 +18,7 @@ interface CardProps {
 }
 
 export const Card = styled.div<CardProps>`
-  background: ${props => props.theme["gray-600"]};
+  background: ${(props) => props.theme['gray-600']};
   border-radius: 6px;
   padding: 2rem;
 
@@ -26,7 +26,7 @@ export const Card = styled.div<CardProps>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: ${props => props.theme["gray-300"]};
+    color: ${(props) => props.theme['gray-300']};
   }
 
   strong {
@@ -35,7 +35,9 @@ export const Card = styled.div<CardProps>`
     font-size: 2rem;
   }
 
-  ${props => props.variant === 'green' && css`
-    background: ${props.theme["green-700"]}
-  `}
+  ${(props) =>
+    props.variant === 'green' &&
+    css`
+      background: ${props.theme['green-700']};
+    `}
 `

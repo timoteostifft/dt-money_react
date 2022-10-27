@@ -1,14 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Header from '../../components/Header';
-import Summary from '../../components/Summary';
-import { Transaction, TransactionsContext } from '../../contexts/TransactionsContext';
-import { dateFormatter, priceFormatter } from '../../utils/formatter';
-import Search from './components/Search';
+import React, { useContext, useEffect, useState } from 'react'
+import Header from '../../components/Header'
+import Summary from '../../components/Summary'
+import {
+  Transaction,
+  TransactionsContext,
+} from '../../contexts/TransactionsContext'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
+import Search from './components/Search'
 
-import { Container, PriceHighlight, TransactionsTable } from './styles';
+import { Container, PriceHighlight, TransactionsTable } from './styles'
 
 const Transactions: React.FC = () => {
-
   const { transactions } = useContext(TransactionsContext)
 
   return (
@@ -31,7 +33,9 @@ const Transactions: React.FC = () => {
                     </PriceHighlight>
                   </td>
                   <td>{transaction.category}</td>
-                  <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
+                  <td>
+                    {dateFormatter.format(new Date(transaction.createdAt))}
+                  </td>
                 </tr>
               )
             })}
@@ -39,7 +43,7 @@ const Transactions: React.FC = () => {
         </TransactionsTable>
       </Container>
     </div>
-  );
+  )
 }
 
-export default Transactions;
+export default Transactions

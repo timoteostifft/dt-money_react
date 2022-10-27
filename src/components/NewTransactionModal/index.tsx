@@ -1,18 +1,23 @@
 import { Portal, Title } from '@radix-ui/react-dialog'
-import { Content, Overlay, Close, TransactionType, TransactionTypeButton } from './styles';
-import { ArrowCircleDown, ArrowCircleUp, FileDoc, X } from 'phosphor-react';
-import * as z from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Controller, useForm } from 'react-hook-form';
-import { api } from '../../lib/axios';
-import { useContext } from 'react';
-import { TransactionsContext } from '../../contexts/TransactionsContext';
+import {
+  Content,
+  Overlay,
+  Close,
+  TransactionType,
+  TransactionTypeButton,
+} from './styles'
+import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
+import * as z from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Controller, useForm } from 'react-hook-form'
+import { useContext } from 'react'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
   price: z.number(),
   category: z.string(),
-  type: z.enum(['income', 'outcome'])
+  type: z.enum(['income', 'outcome']),
 })
 
 type newTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
@@ -25,14 +30,12 @@ const NewTransactionModal: React.FC = () => {
     register,
     handleSubmit,
     reset,
-    formState: {
-      isSubmitting
-    }
+    formState: { isSubmitting },
   } = useForm<newTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
     defaultValues: {
-      type: 'income'
-    }
+      type: 'income',
+    },
   })
 
   async function handleCreateNewTransaction(data: newTransactionFormInputs) {
@@ -53,19 +56,19 @@ const NewTransactionModal: React.FC = () => {
           <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
             <input
               type="text"
-              placeholder='Descrição'
+              placeholder="Descrição"
               required
               {...register('description')}
             />
             <input
               type="number"
-              placeholder='Preço'
+              placeholder="Preço"
               required
               {...register('price', { valueAsNumber: true })}
             />
             <input
               type="text"
-              placeholder='Categoria'
+              placeholder="Categoria"
               required
               {...register('category')}
             />
@@ -92,15 +95,14 @@ const NewTransactionModal: React.FC = () => {
               }}
             />
 
-            <button type='submit' disabled={isSubmitting}>
+            <button type="submit" disabled={isSubmitting}>
               Cadastrar
             </button>
           </form>
-
         </Content>
       </Overlay>
     </Portal>
-  );
+  )
 }
 
-export default NewTransactionModal;
+export default NewTransactionModal

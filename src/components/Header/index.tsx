@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import { Container, Content, NewTransactionButton } from './styles';
+import { Container, Content, NewTransactionButton } from './styles'
 import * as Dialog from '@radix-ui/react-dialog'
 
-import logoImg from '../../assets/logo.svg';
-import NewTransactionModal from '../NewTransactionModal';
+import logoImg from '../../assets/logo.svg'
+import NewTransactionModal from '../NewTransactionModal'
 
 const Header: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ const Header: React.FC = () => {
         </Dialog.Root>
       </Content>
     </Container>
-  );
+  )
 }
 
-export default Header;
+export default Header
