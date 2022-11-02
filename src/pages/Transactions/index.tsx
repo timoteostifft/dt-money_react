@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import Header from '../../components/Header'
 import Summary from '../../components/Summary'
 import {
@@ -11,7 +12,9 @@ import Search from './components/Search'
 import { Container, PriceHighlight, TransactionsTable } from './styles'
 
 const Transactions: React.FC = () => {
-  const { transactions } = useContext(TransactionsContext)
+  const transactions = useContextSelector(TransactionsContext, (context) => {
+    return context.transactions
+  })
 
   return (
     <div>
